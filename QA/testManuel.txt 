@@ -1,0 +1,471 @@
+Comprendre le Scope du Projet
+donc l'utilisateur peut 
+ecrre une task dans l'input 
+ajouter et voir lemement ecrit 
+supprimer la task ajouté 
+faire un update de la task ajouté 
+voir la task ajouté 
+marquer comme completed or not completed 
+afficher les task completed 
+afficher les task non completed 
+afficher tt les task 
+
+1.2 Créer la Matrice de Traçabilité
+
+ajouter task  high   important  a faire 
+afficher les task    import /high   a faire 
+filtrer les task     med            a tester 
+supprimer les task   important            a tester 
+editer task          important             a tester 
+///*****************************************SETP 2 *****************************************-
+set2 Audit de la Documentation 
+# Specifications Fonctionnelles - Todo List MERN
+
+## 🎯 Overview
+Application de gestion de tâches avec stack MERN (MongoDB, Express, React, Node.js)
+
+## 📋 Fonctionnalités Core
+
+### 1. Gestion des Tâches
+- **FR1:** Ajouter une nouvelle tâche
+  - Champ texte avec placeholder "Ajouter une nouvelle tâche..."
+  - Bouton "Ajouter"
+  - Validation: texte non vide
+
+- **FR2:** Afficher la liste des tâches
+  - Affichage sous forme de liste
+  - Checkbox pour état complété/incomplet
+  - Texte barré pour les tâches complétées
+
+- **FR3:** Modifier l'état d'une tâche
+  - Toggle checkbox pour marquer complété/incomplet
+  - Mise à jour visuelle immédiate
+
+- **FR4:** Supprimer une tâche
+  - Bouton "Supprimer" pour chaque tâche
+  - Confirmation visuelle de suppression
+
+### 2. Filtrage et Statistiques
+- **FR5:** Filtres de visualisation
+  - "Toutes": afficher toutes les tâches
+  - "Actives": tâches non complétées seulement
+  - "Complétées": tâches complétées seulement
+
+- **FR6:** Compteur de tâches actives
+  - Affichage du nombre de tâches non complétées
+  - Mise à jour dynamique
+
+### 3. Interface Utilisateur
+- **FR7:** Design responsive
+  - Compatible desktop/tablette/mobile
+  - Interface moderne et clean
+
+## 🚨 Règles Métier
+- Une tâche ne peut pas être vide
+- L'état par défaut est "non complété"
+- Les filtres sont exclusifs
+/////////////////////////////////////////**********************************3 User Stories JIRA/Backlog
+# User Stories - Todo List
+
+## Epic: TODO-1 - Fonctionnalités Core
+
+### TODO-101: Ajout de tâches
+# User Stories - Todo List
+
+## Epic: TODO-1 - Fonctionnalités Core
+
+### TODO-101: Ajout de tâches
+**En tant que** utilisateur  
+**Je veux** ajouter une nouvelle tâche  
+**Afin de** garder trace de ce que je dois faire  
+
+**Critères d'acceptation:**
+- [ ] Champ texte avec placeholder visible
+- [ ] Bouton Ajouter fonctionnel
+- [ ] Tâche ajoutée à la liste après validation
+- [ ] Champ vidé après ajout
+- [ ] Message d'erreur si champ vide
+
+### TODO-102: Affichage des tâches
+**En tant que** utilisateur  
+**Je veux** voir ma liste de tâches  
+**Afin de** visualiser mon progrès  
+
+**Critères d'acceptation:**
+- [ ] Liste chargée au démarrage
+- [ ] Affichage texte + checkbox pour chaque tâche
+- [ ] Design cohérent
+- [ ] si je refreche la page ma liste est toujour visible 
+
+
+### TODO-103: Gestion état tâche
+**En tant que** utilisateur  
+**Je veux** marquer une tâche comme complétée  
+**Afin de** suivre mon avancement  
+
+**Critères d'acceptation:**
+- [ ] Checkbox cliquable
+- [ ] Texte barré pour tâches complétées
+- [ ] Mise à jour persistante
+- [ ] si je refreche la page ma modifications sont toujours visibles 
+
+## Epic: TODO-2 - Fonctionnalités Avancées
+
+### TODO-201: Filtrage des tâches
+**En tant que** utilisateur  
+**Je veux** filtrer mes tâches  
+**Afin de** me concentrer sur l'essentiel  
+
+**Critères d'acceptation:**
+- [ ] visibilité des taches sous status completed visi ke et visibilite de l'absence des autres status 
+- [ ] si je refrech je reste sur le meme affichage 
+- [ ]si j'ajouter un element qui deja a un status not completed il n'est pas afficher mais visible pour status tous ou not completed
+
+### TODO-202: Compteur de tâches
+**En tant que** utilisateur  
+**Je veux** voir le nombre de tâches actives  
+**Afin de** connaître ma charge restante
+**Critères d'acceptation:**
+
+- [ ] le ompteur coiside avec le nombre de tache suivant ce status 
+- [ ]l'afficheur ne change pas si je refrech  la page 
+
+### TODO-203: suppression de tâches
+
+**En tant que** utilisateur  
+**Je veux** cliquer sur l'icone poubelle
+**Afin de** supprimer la tache desiree 
+**Critères d'acceptation:**
+- [ ] si je clic la tache est supprimer 
+- [ ] si je raffrechie la page la tache est encore supprimer 
+- [ ] la suppression enleve le text avec les icones lié a chaque tache 
+
+### TODO-204: modifier de tâches
+
+**En tant que** utilisateur  
+**Je veux** cliquer sur le button modifier 
+**Afin de** modfier le contenuede ma  la tache desiree 
+**Critères d'acceptation:**
+- [ ] si je clic un input apparet qui permet de moddficier le contenue  text 
+- [ ] si je click sur ok j'ai un affichage qui correspond a la modification 
+- [ ] si je raffrechie la page j'ai encore la visibilité de la tache apres modification 
+TODO-101: Adding Tasks
+gherkin
+Feature: Add new tasks
+  As a user
+  I want to add new tasks
+  So that I can keep track of my todo items
+
+Scenario: Successfully add a new task
+  Given I am on the todo list page
+  When I enter "Buy groceries" in the input field
+  And I click the "Add" button
+  Then I should see "Buy groceries" in the task list
+  And the input field should be cleared
+
+Scenario: Prevent adding empty task
+  Given I am on the todo list page
+  When I click the "Add" button without entering text
+  Then I should see an error message
+  And no empty task should be added to the list
+TODO-102: Displaying Tasks
+gherkin
+Feature: Display tasks list
+  As a user
+  I want to see my tasks list
+  So that I can visualize my progress
+
+Scenario: Load tasks on application start
+  Given I have existing tasks in the database
+  When I open the application
+  Then I should see all my tasks displayed
+  And each task should have text and a checkbox
+
+Scenario: Persist tasks after page refresh
+  Given I have tasks displayed
+  When I refresh the browser page
+  Then all my tasks should still be visible
+  And the task states should be preserved
+TODO-103: Task State Management
+gherkin
+Feature: Manage task completion state
+  As a user
+  I want to mark tasks as completed/incomplete
+  So that I can track my progress
+
+Scenario: Mark task as completed
+  Given I have an active task "Read book"
+  When I click the checkbox next to "Read book"
+  Then the task should appear with strikethrough text
+  And the checkbox should be checked
+
+Scenario: Persist completion state after refresh
+  Given I have completed a task
+  When I refresh the page
+  Then the task should remain completed
+  And the strikethrough should still be visible
+TODO-201: Task Filtering
+gherkin
+Feature: Filter tasks by status
+  As a user
+  I want to filter my tasks
+  So that I can focus on specific statuses
+
+Scenario: Filter completed tasks only
+  Given I have both completed and active tasks
+  When I select the "Completed" filter
+  Then only completed tasks should be visible
+  And active tasks should be hidden
+
+Scenario: Maintain filter after page refresh
+  Given I have selected "Active" filter
+  When I refresh the page
+  Then the "Active" filter should remain selected
+  And only active tasks should be displayed
+
+Scenario: New task respects current filter
+  Given I have "Completed" filter selected
+  When I add a new task "New task"
+  Then the new task should not be visible (since it's active)
+  When I switch to "All" or "Active" filter
+  Then the new task should be visible
+TODO-202: Active Tasks Counter
+gherkin
+Feature: Active tasks counter
+  As a user
+  I want to see the number of active tasks
+  So that I know my remaining workload
+
+Scenario: Counter reflects correct number
+  Given I have 3 active tasks and 2 completed tasks
+  Then the counter should display "3 active tasks"
+
+Scenario: Counter updates automatically
+  Given the counter shows "3 active tasks"
+  When I complete one task
+  Then the counter should update to "2 active tasks"
+
+Scenario: Counter persists after refresh
+  Given I have a certain number of active tasks
+  When I refresh the page
+  Then the counter should show the same number
+TODO-203: Delete Tasks
+gherkin
+Feature: Delete tasks
+  As a user
+  I want to delete tasks
+  So that I can remove completed or obsolete items
+
+Scenario: Delete a task
+  Given I have a task "Old task"
+  When I click the delete button for "Old task"
+  Then "Old task" should be removed from the list
+  And all associated elements should disappear
+
+Scenario: Deletion persists after refresh
+  Given I have deleted a task
+  When I refresh the page
+  Then the deleted task should not reappear
+TODO-204: Edit Tasks
+gherkin
+Feature: Edit task content
+  As a user
+  I want to edit task text
+  So that I can correct errors or update content
+
+Scenario: Enter edit mode
+  Given I have a task "Original text"
+  When I click the "Edit" button
+  Then the text should change to an editable input field
+  And "Save" and "Cancel" buttons should appear
+
+Scenario: Save edited task
+  Given I am editing a task
+  When I change the text to "Updated text"
+  And I click the "Save" button
+  Then the task should display "Updated text"
+  And the edit mode should exit
+
+Scenario: Edit persists after refresh
+  Given I have edited a task
+  When I refresh the page
+  Then the updated text should still be visible
+
+🧪 Additional Edge Case Scenarios
+
+gherkin
+Scenario: Multiple consecutive operations
+  Given I have several tasks
+  When I add, complete, and delete tasks rapidly
+  Then all operations should execute correctly
+  And the UI should remain responsive
+
+Scenario: Long task text handling
+  Given I add a task with very long text
+  Then the text should be properly displayed
+  And the layout should not break
+
+Scenario: Network connectivity issues
+  Given I lose internet connection
+  When I try to add a task
+  Then I should see an appropriate error message
+  And the task should be saved when connection resumes
+
+
+   Stack Technique
+Frontend (React)
+Framework: React 18+
+
+Build Tool: Create React App
+
+Testing: Jest, React Testing Library
+
+Styling: CSS custom
+
+Backend (Node.js/Express)
+Runtime: Node.js
+
+Framework: Express.js
+
+Base de données: MongoDB avec Mongoose
+
+Testing: Jest, Supertest
+
+Base de Données
+MongoDB Atlas (cloud) ou local
+
+Schéma:
+
+javascript
+{
+  _id: ObjectId,
+  text: String,
+  completed: Boolean,
+  createdAt: Date
+}
+📡 API Endpoints
+Méthode	Endpoint	Description
+GET	/api/todos	Récupérer toutes les tâches
+POST	/api/todos	Créer une nouvelle tâche
+PUT	/api/todos/:id	Modifier une tâche
+DELETE	/api/todos/:id	Supprimer une tâche
+text
+
+## 4. 📡 **API Documentation (Swagger/Postman)**
+
+**Fichier: `docs/API_DOCUMENTATION.md`**
+
+```markdown
+# API Documentation - Todo List
+
+## Base URL
+`http://localhost:5000/api`
+
+## 📋 Endpoints
+
+### GET /todos
+Récupère toutes les tâches
+
+**Response:**
+```json
+[
+  {
+    "_id": "507f1f77bcf86cd799439011",
+    "text": "Apprendre React",
+    "completed": false,
+    "createdAt": "2023-12-01T10:00:00.000Z"
+  }
+]
+POST /todos
+Crée une nouvelle tâche
+
+Body:
+
+json
+{
+  "text": "Nouvelle tâche",
+  "completed": false
+}
+Response:
+
+json
+{
+  "_id": "507f1f77bcf86cd799439012",
+  "text": "Nouvelle tâche",
+  "completed": false,
+  "createdAt": "2023-12-01T10:30:00.000Z"
+}
+PUT /todos/:id
+Modifie une tâche existante
+
+Body:
+
+json
+{
+  "text": "Texte modifié",
+  "completed": true
+}
+DELETE /todos/:id
+Supprime une tâche
+
+Response:
+
+json
+{
+  "message": "Todo deleted"
+}
+🚨 Codes d'Erreur
+200 Succès
+
+201 Créé
+
+400 Mauvaise requête
+
+404 Non trouvé
+
+500 Erreur serveur
+
+
+
+Smoke Tests
+Application se lance
+
+API répond aux requêtes
+
+Base de données accessible
+
+Tests Fonctionnels
+Ajout de tâche
+
+Affichage liste
+
+Toggle completion
+
+Suppression tâche
+
+Filtrage
+
+Compteur tâches
+## 6. ⚙️ **Procédures d'Installation**
+
+# Procédures d'Installation - Todo List
+
+## 🛠️ Prérequis
+- Node.js 16+
+- MongoDB (local ou Atlas)
+- npm ou yarn
+
+## 📥 Installation Frontend
+
+```bash
+# Cloner le projet
+git clone [repository-url]
+cd frontend
+
+# Installer les dépendances
+npm install
+
+# Configuration
+cp .env.example .env
+# Modifier les variables d'environnement
+
